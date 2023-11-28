@@ -1,0 +1,38 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+}
+
+/* Hide the vertical scrollbar */
+.scrollable-div::-webkit-scrollbar {
+  width: 0.4rem; /* Adjust this value to match the width of your content */
+}
+
+/* Track (background) for the scrollbar */
+.scrollable-div::-webkit-scrollbar-track {
+  background: transparent; /* You can use any color you like */
+}
+
+/* Handle (thumb) for the scrollbar */
+.scrollable-div::-webkit-scrollbar-thumb {
+  background: #888; /* You can change the color to your preference */
+}
+
+.Toastify__toast {
+  z-index: 1000000 !important;
+}
+
+li {
+  list-style-type: none;
+}
+
+
+button,input{
+  position: relative;
+  z-index: 0;
+}
