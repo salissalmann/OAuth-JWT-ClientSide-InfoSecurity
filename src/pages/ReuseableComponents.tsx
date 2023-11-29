@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { schools } from '../Data/data';
 import Badge from '../components/UiComponents/Badges';
 import { ButtonFill, ButtonOutlined } from '../components/UiComponents/Button';
 import CardsContainer from '../components/UiComponents/CardsContainer';
@@ -51,12 +50,6 @@ const ReuseableComponents = () => {
         </p>
       </Drawer>
 
-      <CustomSearchDropdown
-        options={schools}
-        getDropDownValue={getDropDownValue}
-        placeholder="Enter School Name"
-        width="w-full max-w-lg"
-      />
 
       <CardsContainer />
       <div className="my-7">

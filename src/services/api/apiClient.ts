@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_BASE_URL, ENVIRONMENT } from "../../config";
+import { isAxiosError } from "axios";
 
 
 const baseURL =
@@ -23,7 +24,6 @@ const getCookie = (name: string) => {
 
 apiClient.interceptors.request.use((config) => {
   const accessToken = getCookie("accessToken");
-  //name bearer kerdeinge
   if (accessToken) {
     config.headers["Authorization-Token"] = `${accessToken}`;
   }
@@ -47,16 +47,18 @@ apiClient.interceptors.response.use(
           error.config.headers["Authorization-Token"] = `${newAccessToken}`;
           return apiClient(error.config);
         }
-      } catch (refreshError) {
-        console.error("Token refresh failed:", refreshError);
-        //redirect to login page
-        //toast dalna hai ke session expired
-        location.replace(
-          `${location.origin}/login`
-        );
-        throw refreshError;
+        else{
+          window.location.href = "/login";
+        }
       }
-    }
+      catch (error) {
+        if (isAxiosError(error)) {
+          if (error.response?.status === 401) {
+            window.location.href = "/login";
+          }
+        }
+      }
+    } 
     return Promise.reject(error);
   }
 );

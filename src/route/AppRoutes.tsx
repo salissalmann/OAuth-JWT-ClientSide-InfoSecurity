@@ -7,8 +7,6 @@ import { Route, Routes } from 'react-router-dom';
 const AppRoutes: React.FC = () => {
    return (
       <Routes>
-         <Route path="/" element={<PublicRoutes />} />
-         <Route path="/" element={<ProtectedRoutes />} />
       </Routes>
    );
 };

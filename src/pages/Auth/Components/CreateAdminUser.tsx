@@ -199,6 +199,14 @@ export const AddingForm: React.FC<AddFormInterface> = ({
         }
         catch (error) {
             if (isAxiosError(error)) {
+                if(error.response?.data.header.errorMessage === 'Invalid Access Token'){
+                    window.location.href = "/login";
+                    return
+                }
+                if(error.response?.data.header.errorMessage === 'Access Token not found'){
+                    window.location.href = "/login";
+                    return
+                }
                 showToast(
                     error.response?.data.header.errorMessage,
                     'error'
@@ -290,19 +298,6 @@ export const AddingForm: React.FC<AddFormInterface> = ({
                 />
             </div>
 
-            <div className="mt-4">
-                <Label>Test User</Label>
-                <Switcher
-                    for={"20-1029"}
-                    togglevalue={user.testUser ? true : false}
-                    onChange={(value) => {
-                        setUser({
-                            ...user,
-                            testUser: value
-                        })
-                    }}
-                />
-            </div>
             <MyToast />
 
             <div
@@ -349,7 +344,6 @@ export const AddingForm: React.FC<AddFormInterface> = ({
                                 password: '',
                                 phoneNumber: '',
                                 role: '',
-                                testUser: false
                             }
                         )
                     }}

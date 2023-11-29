@@ -11,3 +11,9 @@ export const CreateNewUser = async (body: any) => {
     const response = await apiClient.post(`${path}/createNewUser`, body);
     return response;
 };
+
+
+export const Login = async (body: any) => {
+    const response = await apiClient.post(`/api/auth/login`, body);
+    return response;
+}
